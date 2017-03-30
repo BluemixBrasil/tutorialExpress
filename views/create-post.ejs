@@ -1,0 +1,60 @@
+<!-- views/post.ejs -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Criar Post | Node.js Blog</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+        </style>
+        
+        <script>
+        var sent = function(){
+            alert("Post Criado");
+        }
+        </script>
+    </head>
+    
+    <body>
+        
+    <div class="container">
+        <%- include('partials/navbar') %>
+        <div class="jumbotron">
+            <h1>Blog Node</h1>
+            <p class="lead">Crie um post</p>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-lg-12">
+                
+            <form action="/create" method="post" >    
+            <fieldset>   
+                Título: <input type="text" name="title" required>
+                Autor: <input type="text" name="author" required><br>
+                <p>Post:</p>
+                <textarea name="body" rows="8" cols="100" required></textarea>
+            
+                <p style="padding:10px;"></p>
+            
+                <input type="submit" value="Enviar" onclick="sent();">
+                </fieldset> 
+            </form>    
+                
+            </div>
+        </div>
+        
+        
+        <p style="padding:15px;"></p>
+        
+        
+        <%- include('partials/footer') %>        
+    </div>
+        
+</body>
+
+</html>

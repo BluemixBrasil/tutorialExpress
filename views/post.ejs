@@ -3,8 +3,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>POST_TITLE | Node.js Blog</title>
+        <title><%= title %> | Node.js Blog</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <style>
             body {
                 padding-top: 20px;
@@ -17,12 +18,28 @@
     <div class="container">
         <%- include('partials/navbar') %>
         <div>
-            <h2><%= title %></h2>
+            <h2 id="title"><%= title %></h2>
             <p>by <a href="#"><%= author %></a></p>
-
+            
             <p><%= body %></p>
         </div>
-        <%- include('partials/footer') %>
+        
+        <button type="button" id="delete"><span class="glyphicon glyphicon-trash"></span></button>
+        <script>
+        
+            var title = "<%=title%>";
+            
+            $('#delete').click(function(){
+                console.log(title);
+               $.post('/delete',{title:title})
+               .done(function onSuccess(title){
+                  console.log("data sent"); 
+               })
+               .fail(function onError(error){
+                   console.log(error);
+               });
+            });
+        </script>
     </div>
 </body>
 
